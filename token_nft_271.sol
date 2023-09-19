@@ -1,25 +1,24 @@
 // SPDX-License-Identifier: MIT
+
+// Endereço do contrato: 0xee4f244adb4a4DC18b9d83678EAC96e950592B76
+
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-// Metadados: https://github.com/jeffprestes/nft-bradesco
-
-contract EvidenciaPresencaCursoBradesco is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
+contract Fofinho is ERC721, ERC721URIStorage, Ownable, ERC721Burnable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Evidencia Presenca Curso Bradesco", "EVVB") {
-        _tokenIdCounter.increment();
-    }
+    constructor() ERC721("fofinho", "FOF") {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://jeffprestes.github.io/nft-bradesco/";
+        return "https://github.com/JulianaOlio/nft-bradesco-ju";
     }
 
     function safeMint(address to, string memory uri) public onlyOwner {
@@ -29,6 +28,7 @@ contract EvidenciaPresencaCursoBradesco is ERC721, ERC721URIStorage, ERC721Burna
         _setTokenURI(tokenId, uri);
     }
 
+  
     // The following functions are overrides required by Solidity.
 
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
@@ -53,3 +53,4 @@ contract EvidenciaPresencaCursoBradesco is ERC721, ERC721URIStorage, ERC721Burna
         return super.supportsInterface(interfaceId);
     }
 }
+     
