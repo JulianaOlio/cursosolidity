@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: MIT
+
+// Endereço do contrato: 0xF0509447f48216572B573b84052391157719a8A8
+
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
