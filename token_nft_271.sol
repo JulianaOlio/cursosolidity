@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 
-// Endereço do contrato: 0xee4f244adb4a4DC18b9d83678EAC96e950592B76
+// 0xd9145CCE52D386f254917e481eB44e9943F39138
 
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract Fofinho is ERC721, ERC721URIStorage, Ownable, ERC721Burnable {
+contract Fofinho is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
@@ -28,7 +28,6 @@ contract Fofinho is ERC721, ERC721URIStorage, Ownable, ERC721Burnable {
         _setTokenURI(tokenId, uri);
     }
 
-  
     // The following functions are overrides required by Solidity.
 
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
@@ -41,7 +40,7 @@ contract Fofinho is ERC721, ERC721URIStorage, Ownable, ERC721Burnable {
         override(ERC721, ERC721URIStorage)
         returns (string memory)
     {
-        return string.concat(super.tokenURI(tokenId), ".json");
+        return super.tokenURI(tokenId);
     }
 
     function supportsInterface(bytes4 interfaceId)
@@ -53,4 +52,4 @@ contract Fofinho is ERC721, ERC721URIStorage, Ownable, ERC721Burnable {
         return super.supportsInterface(interfaceId);
     }
 }
-     
+
